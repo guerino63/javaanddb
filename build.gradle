@@ -1,0 +1,18 @@
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'application'
+
+
+description = 'Java And Database'
+    group = 'it.room'
+
+mainClassName = 'it.room.javaanddb.Inizio'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.h2database', name: 'h2', version: '1.4.200'
+    testImplementation     'junit:junit:4.13'
+}
