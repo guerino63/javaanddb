@@ -16,3 +16,11 @@ dependencies {
     compile group: 'com.h2database', name: 'h2', version: '1.4.200'
     testImplementation     'junit:junit:4.13'
 }
+
+jar {
+  manifest {
+    attributes(
+      'Main-Class': mainClassName
+    )
+  }
+}
