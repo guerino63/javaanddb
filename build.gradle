@@ -24,3 +24,7 @@ jar {
     )
   }
 }
+
+task showMeCache doLast() {
+    configurations.compileClasspath.each { println it }
+}
