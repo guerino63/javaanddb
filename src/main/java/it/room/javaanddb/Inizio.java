@@ -15,7 +15,8 @@ public class Inizio {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        JFrameDb jFrameDb = new JFrameDb();
+        jFrameDb.setVisible(true);
     }
     
 }

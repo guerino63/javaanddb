@@ -5,10 +5,7 @@
  */
 package it.room.javaanddb;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 
 /**
@@ -56,7 +53,7 @@ public class JFrameDb extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jLabel1.setText("Tabella TEST");
 
-        jLabel2.setText("Comandi SQL                     (Es: select * ordered by cognome)");
+        jLabel2.setText("Comandi SQL                     (Es: select * from TEST order by cognome)");
 
         jButtonEseguiComando.setText("Esegui Comando");
         jButtonEseguiComando.addActionListener(new java.awt.event.ActionListener() {
@@ -75,8 +72,8 @@ public class JFrameDb extends javax.swing.JFrame {
                     .addComponent(jButtonEseguiComando)
                     .addComponent(jLabel1)
                     .addComponent(jTextFieldComandoSql)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

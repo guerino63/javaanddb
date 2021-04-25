@@ -29,8 +29,8 @@
                   <Component id="jButtonEseguiComando" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldComandoSql" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jLabel2" alignment="0" min="-2" pref="412" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" alignment="0" pref="605" max="32767" attributes="0"/>
+                  <Component id="jLabel2" alignment="0" min="-2" pref="553" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
@@ -95,7 +95,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Comandi SQL                     (Es: select * ordered by cognome)"/>
+        <Property name="text" type="java.lang.String" value="Comandi SQL                     (Es: select * from TEST order by cognome)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonEseguiComando">
