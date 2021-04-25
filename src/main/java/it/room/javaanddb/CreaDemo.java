@@ -3,6 +3,7 @@ package it.room.javaanddb;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -68,12 +69,67 @@ public class CreaDemo {
             System.exit(-1);
         }
         try {
-            stmt.executeUpdate("UPDATE " + NOME_TABELLA + " SET eta="+nuovaEta+" WHERE cognome='" + cognome+"'");
+            stmt.executeUpdate("UPDATE " + NOME_TABELLA + " SET eta=" + nuovaEta + " WHERE cognome='" + cognome + "'");
         } catch (SQLException ex) {
             Logger.getLogger(CreaDemo.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
         return true;
+    }
+
+    public ArrayList<String> execSQL(String command)  {
+        ArrayList<String> arrayList = new ArrayList<>();
+        Statement stmt = DbConnect.getConnectionStatement();
+        if (stmt == null) {
+            System.out.println("Connessione rifiutata, esco...");
+            System.exit(-1);
+        }
+        ResultSet rs = null;
+        try {
+            rs = stmt.executeQuery(command);
+        } catch (SQLException ex) {
+            Logger.getLogger(CreaDemo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            while (rs.next()) {
+                int id;
+                try {
+                    id = rs.getInt("id");
+                } catch (SQLException ex) {
+                    Logger.getLogger(CreaDemo.class.getName()).log(Level.SEVERE, null, ex);
+                    id=-1;
+                }
+                String nome;
+                try {
+                    nome = rs.getString("nome");
+                } catch (SQLException ex) {
+                    Logger.getLogger(CreaDemo.class.getName()).log(Level.SEVERE, null, ex);
+                    nome="n---";
+                }
+                String cognome;
+                try {
+                    cognome = rs.getString("cognome");
+                } catch (SQLException ex) {
+                    Logger.getLogger(CreaDemo.class.getName()).log(Level.SEVERE, null, ex);
+                    cognome="c---";
+                }
+                String eta;
+                try {
+                    eta = rs.getString("eta");
+                } catch (SQLException ex) {
+                    Logger.getLogger(CreaDemo.class.getName()).log(Level.SEVERE, null, ex);
+                    eta="e--";
+                }
+                
+                String st = String.format(
+                        "id:%d, Nome:%s, Cognome:%s, Eta':%s",id,nome,cognome,eta);
+                arrayList.add(st);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CreaDemo.class.getName()).log(Level.SEVERE, "la lettura del record è finita in malo modo...", ex);
+        }
+        return arrayList;
     }
 
     public void leggiRecords() throws SQLException {
@@ -101,10 +157,10 @@ public class CreaDemo {
         creaDemo.inserisciRecordsPerTest();
         creaDemo.leggiRecords();
         boolean ret = creaDemo.updateRecord("Azzurra", 28);
-        if(!ret){
+        if (!ret) {
             System.out.println("Update record non eseguito correttamente");
         } else {
-            System.out.println("Update record eseguito");            
+            System.out.println("Update record eseguito");
         }
         creaDemo.leggiRecords();
     }
